@@ -1,0 +1,33 @@
+﻿<Window x:Class="Paint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Paint"
+        mc:Ignorable="d"
+        Title="Paint" Height="450" Width="800" Icon="icon.png">
+    <DockPanel>
+        <ToolBar Name="Toolbar" Height="30" DockPanel.Dock="Top">
+            <RadioButton Name="btnDraw" IsChecked="False" Click="btnDraw_Checked" BorderBrush="#000" Width="80" Height="30" GroupName="DrawGroup"
+            Content="Draw" Checked="btnDraw_Checked"></RadioButton>
+            <RadioButton Name="btnErase" Click="btnErase_Checked" Content="Erase" BorderBrush="#000" Width="80" Height="30" GroupName="DrawGroup" Checked="btnErase_Checked"></RadioButton>
+            <RadioButton Name="btnSelect" Click="btnSelect_Checked" Content="Select" BorderBrush="#000" Width="80" Height="30" GroupName="DrawGroup" Margin="0,-2,0,-2.4" VerticalAlignment="Top" Checked="btnSelect_Checked"></RadioButton>
+            <Separator/>
+            <Label VerticalAlignment="Center" Content="Brush Size"></Label>
+            <ComboBox Name="cboBrushSize" SelectionChanged="cboBrushSize_SelectionChanged" DropDownClosed="cboBrushSize_DropDownClosed">
+                <ComboBoxItem Content="3"></ComboBoxItem>
+                <ComboBoxItem Content="5" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="10"></ComboBoxItem>
+                <ComboBoxItem Content="14"></ComboBoxItem>
+            </ComboBox>
+            <xctk:ColorPicker Name="Color" SelectedColorChanged="Color_SelectedColorChanged" Width ="40"></xctk:ColorPicker>
+        </ToolBar>
+        <InkCanvas Name="Canvas">
+            <Rectangle Fill="#FFF4F4F5" Height="0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes x:Name="BrushAtt" Width="5" Height="5" Color="Black"></DrawingAttributes>
+            </InkCanvas.DefaultDrawingAttributes>
+        </InkCanvas>
+    </DockPanel>
+</Window>
